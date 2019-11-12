@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>CS:GO Player Simulator</title>
+  <link rel="icon" href="csgo.ico">
+</head>
+<body>
+
+  <div class="tab-content">
+
+    <div class="flex-container">
+      <ul class="nav nav-pills">
+        <li class="active"><a data-toggle="pill" href="#matchmaking">Matchmaking</a></li>
+        <li><a data-toggle="pill" href="#gear">Gear</a></li>
+        <li><a data-toggle="pill" href="#stats">Stats</a></li>
+        <li><a data-toggle="pill" href="#faceit">FaceIt</a></li>
+        <li><a data-toggle="pill" href="#team">Team</a></li>
+        <li><a data-toggle="pill" href="#minorQualifier">Minor Qualifier</a></li>
+        <li><a data-toggle="pill" href="#minor">Minor</a></li>
+        <li><a data-toggle="pill" href="#major">Major</a></li>
+        <li><a data-toggle="pill" href="#ranking">Ranking</a></li>
+        <li><a data-toggle="pill" href="#info">Info</a></li>
+      </ul>
+    </div>
+    <div id="matchmaking" class="tab-pane active">
+      <div class="flex-container">
+        <div class="panel panel-default" style="width:50%;">
+          <div class="panel-heading pushup">
+            <h3 class="panel-title noselect">Matchmaking</h3>
+          </div>
+          <div class="panel-body pushup">
+            <button class="btn" type="button" name="button" onclick="playGame()">Play Game</button><br>
+            Wins: <span id="wins">0</span><br>
+            Losses: <span id="losses">0</span><br>
+            Rank: <span id="rank">Silver 1</span><br>
+          </div>
+        </div>
+        <div class="panel panel-default" style="width:50%;">
+          <div class="panel-heading pushup">
+            <h3 class="panel-title noselect">Skins</h3>
+          </div>
+          <div class="panel-body pushup">
+            Skins: <span id="skins">0</span><br>
+            Money: $<span id="money">0</span><br>
+            <button class="btn" type="button" name="button" onclick="sellSkin()">Sell Skin</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="gear" class="tab-pane">
+      <div class="flex-container">
+        <div class="panel panel-default" style="width:50%;">
+          <div class="panel-heading pushup">
+            <h3 class="panel-title noselect">Gear</h3>
+          </div>
+          <div class="panel-body pushup">
+            Mouse: <span class="noselect" id="mouse">0</span><br>
+            Keyboard: <span class="noselect" id="keyboard">0</span><br>
+            Screen: <span class="noselect" id="screen">0</span><br>
+            GPU: <span class="noselect" id="gpu">0</span><br>
+            CPU: <span class="noselect" id="cpu">0</span><br>
+          </div>
+        </div>
+        <div class="panel panel-default" style="width:50%;">
+          <div class="panel-heading pushup">
+            <h3 class="panel-title noselect">Gear Upgrades</h3>
+          </div>
+          <div class="panel-body pushup">
+            <button class="btn" onclick="upgradeMouse()">Upgrade Mouse</button><br>
+            <button class="btn" onclick="upgradeKeyboard()">Upgrade Keyboard</button><br>
+            <button class="btn" onclick="upgradeScreen()">Upgrade Screen</button><br>
+            <button class="btn" onclick="upgradeGPU()">Upgrade GPU</button><br>
+            <button class="btn" onclick="upgradeCPU()">Upgrade CPU</button><br>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="stats" class="tab-pane">
+      <div class="flex-container">
+        <div class="panel panel-default" style="width:50%;">
+          <div class="panel-heading pushup">
+            <h3 class="panel-title noselect">Stats</h3>
+          </div>
+          <div class="panel-body pushup">
+            Aim: <div class="progress"><div id="aim" class="progress-bar progress-bar-aim" value="20%" style="width:150px;"></div></div>
+            Game Sense: <div class="progress"><div id="gameSense" class="progress-bar progress-bar-gameSense" style="width:150px;"></div></div>
+            Movement: <div class="progress"><div id="movement" class="progress-bar progress-bar-movement" style="width:150px;"></div></div>
+          </div>
+        </div>
+        <div class="panel panel-default" style="width:50%;">
+          <div class="panel-heading pushup">
+            <h3 class="panel-title noselect">Train Stats</h3>
+          </div>
+          <div class="panel-body pushup">
+            <button class="btn" onclick="trainAim()">Play Deathmatch</button><br>
+            <button class="btn" onclick="trainGameSense()">Study Demo</button><br>
+            <button class="btn" onclick="trainMovement()">Play KZ</button><br>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="faceit" class="tab-pane">
+      <div class="flex-container">
+        <div class="panel panel-default" style="width:50%;">
+          <div class="panel-heading pushup">
+            <h3 class="panel-title noselect">FaceIt Pugs</h3>
+          </div>
+          <div class="panel-body pushup">
+            <button class="btn" onclick="playPug()">Play Pug</button><br>
+            Wins: <span id="faceitWins">0</span><br>
+            Losses: <span id="faceitLosses">0</span><br>
+            Elo: <span id="faceitElo">0</span><br>
+            Rank: <span id="faceitRank">FaceIt Level 1</span><br>
+            League: <span id="faceitLeague">Bronze League</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="team" class="tab-pane">
+      <div class="flex-container">
+        <div class="panel panel-default" style="width:50%;">
+          <div class="panel-heading pushup">
+            <h3 class="panel-title noselect">Team</h3>
+          </div>
+          <div class="panel-body pushup">
+            Team: <span id="teamName">unknown</span>
+          </div>
+        </div>
+        <div class="panel panel-default" style="width:50%;">
+          <div class="panel-heading pushup">
+            <h3 class="panel-title noselect">Team</h3>
+          </div>
+          <div class="panel-body pushup">
+            Team: <span id="teamName">unknown</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="minorQualifier" class="tab-pane">
+      <div class="flex-container">
+        <div class="panel panel-default" style="width:50%;">
+          <div class="panel-heading pushup">
+            <h3 class="panel-title noselect">Group Stage</h3>
+          </div>
+          <div class="panel-body pushup">
+            <p id="mqgs"></p>
+          </div>
+        </div>
+        <div class="panel panel-default" style="width:50%;">
+          <div class="panel-heading pushup">
+            <h3 class="panel-title noselect">Knockout Stage</h3>
+          </div>
+          <div class="panel-body pushup">
+            Team: <span id="teamName">unknown</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="minor" class="tab-pane">
+      <div class="flex-container">
+        <div class="panel panel-default" style="width:50%;">
+          <div class="panel-heading pushup">
+            <h3 class="panel-title noselect">Group Stage</h3>
+          </div>
+          <div class="panel-body pushup">
+            Team: <span id="teamName">unknown</span>
+          </div>
+        </div>
+        <div class="panel panel-default" style="width:50%;">
+          <div class="panel-heading pushup">
+            <h3 class="panel-title noselect">Knockout Stage</h3>
+          </div>
+          <div class="panel-body pushup">
+            Team: <span id="teamName">unknown</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="major" class="tab-pane">
+      <div class="flex-container">
+        <div class="panel panel-default" style="width:50%;">
+          <div class="panel-heading pushup">
+            <h3 class="panel-title noselect">Group Stage</h3>
+          </div>
+          <div class="panel-body pushup">
+            Team: <span id="teamName">unknown</span>
+          </div>
+        </div>
+        <div class="panel panel-default" style="width:50%;">
+          <div class="panel-heading pushup">
+            <h3 class="panel-title noselect">Knockout Stage</h3>
+          </div>
+          <div class="panel-body pushup">
+            Team: <span id="teamName">unknown</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="ranking" class="tab-pane">
+      <div class="flex-container">
+        <div class="panel panel-default" style="width:50%;">
+          <div class="panel-heading pushup">
+            <h3 class="panel-title noselect">Team Ranking</h3>
+          </div>
+          <div class="panel-body pushup panel-ranking">
+            <ol class="ranking" id="rankList">
+            </ol>
+          </div>
+        </div>
+        <div class="panel panel-default" style="width:50%;">
+          <div class="panel-heading pushup">
+            <h3 class="panel-title noselect">Team Information</h3>
+          </div>
+          <div class="panel-body pushup">
+            <div id="teamInfo">
+              Select a team to see their information.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="info" class="tab-pane">
+      <div class="flex-container">
+        <div class="panel panel-default" style="width:50%;">
+          <div class="panel-heading pushup">
+            <h3 class="panel-title noselect">Info</h3>
+          </div>
+          <div class="panel-body pushup">
+            The aim of the game is to improve yourself as a player and climb the CS:GO rankings!
+          </div>
+        </div>
+        <div class="panel panel-default" style="width:50%;">
+          <div class="panel-heading pushup">
+            <h3 class="panel-title noselect">Stats</h3>
+          </div>
+          <div class="panel-body pushup">
+            Check all of your career stats.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="flex-container-save">
+    <a class="btn" onclick="save()">Save</a>
+    <a class="btn" onclick="load()">Load</a>
+    <a class="btn" onclick="deleteSave()">Delete Save</a>
+  </div>
+</div>
+<script src="lib/jquery/js/jquery.min.js"></script>
+<script type="text/javascript" src="js/core.js"></script>
+<script type="text/javascript" src="js/shop.js"></script>
+<script type="text/javascript" src="js/teams.js"></script>
+<script type="text/javascript" src="js/save.js"></script>
+<script src="lib/bootstrap/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="css/core.css">
+</body>
+</html>

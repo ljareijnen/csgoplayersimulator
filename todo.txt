@@ -1,0 +1,44 @@
+List of keyboards:
+
+.
+.
+.
+.
+.
+.
+.
+.
+.
+
+List of GPUs:
+
+.
+.
+.
+.
+.
+.
+.
+.
+.
+
+List of CPUs:
+
+.
+.
+.
+.
+.
+.
+.
+.
+.
+
+Rework skin system
+Matchmaking with user input
+Rank icons
+Player roles
+Player stats
+Ability to train stats
+Tournaments/pugs (from a certain rank)
+Pro-scene (after GE)
